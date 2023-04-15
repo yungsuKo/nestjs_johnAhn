@@ -21,19 +21,19 @@ export class BoardService {
     return board;
   }
 
-  getBoardById (id : string):Board{
-    const found = this.boards.find((board) => board.id === id)
-    if(!found) throw new NotFoundException(`Can't find Board with id ${id}`);
+  getBoardById(id: string): Board {
+    const found = this.boards.find((board) => board.id === id);
+    if (!found) throw new NotFoundException(`Can't find Board with id ${id}`);
     return found;
   }
 
-  deleteBoardById(id :string):void{
+  deleteBoardById(id: string): void {
     const found = this.getBoardById(id);
-    if(!found) throw new NotFoundException(`Can't find Board with id ${id}`);
-    this.boards = this.boards.filter((board) => board.id !== found.id)
+    if (!found) throw new NotFoundException(`Can't find Board with id ${id}`);
+    this.boards = this.boards.filter((board) => board.id !== found.id);
   }
 
-  updateBoardStatus(id: string, status: BoardStatus): Board{
+  updateBoardStatus(id: string, status: BoardStatus): Board {
     const board = this.getBoardById(id);
     board.status = status;
     return board;
